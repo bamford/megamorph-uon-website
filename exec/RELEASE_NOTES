@@ -1,0 +1,74 @@
+# Release Notes
+
+## GALFITM
+
+### galfitm-1.0.0
+
+The first release of MegaMorph's GALFITM is now available!﻿
+
+
+### galfitm-1.1.0
+
+The only change is a tweak to the non-parametric method.  So, don't worry about upgrading if you aren't using that (highly experimental!) option.
+
+More details… During the creation of the non-parametric image, a mask is applied to remove negative pixels and faint "ringing" features introduced buy the wavelet filtering.  Previously, when performing multi-band fitting with a non-parametric component, the same mask was always applied to all bands.  This is sensible when using SED homogenisation [i.e., "U) 1", which forces every pixel in the nonparam image to have the same SED], but is unnecessary when SED homogenisation is disabled [i.e. "U) -1"].  In this latter case the nonparam image is constructed for each band independently.  Now, in version 1.1.0, when SED homogenisation is turned off, the masking is done independently too.  Thanks to +Lee Kelvin and +Ulli Kuchner for highlighting this.
+
+
+### galfitm-1.1.1
+
+This version had a quickly discovered bug on linux, regarding the initialization of char arrays allocated on the heap instead of the stack.  It was therefore not distributed publicly.  See galfitm-1.1.2 for description of functional changes.
+
+
+### galfitm-1.1.2
+
+A new version of GALFITM is available: 1.1.2.  This one is for those of you who want to fit a lot of images simultaneously.
+
+It was noticed that previous versions were limited to fitting a maximum of 11 bands.  This was not done for any particular reason, the method is general for an arbitrary number of bands.  However, for very large numbers of bands, some minor changes to the memory management are required.  For now the maximum number has been increased to 5000, which should be plenty for the time being!
+
+It was also noticed that recent versions used libraries that were compiled without full optimisation flags.  These flags are now enabled, so a small speed increase may be noticeable.
+
+
+### galfitm-1.1.3
+
+Fixes a	bug with input line length, and improve many-band stability.
+
+Input lines were being clipped at 1000 characters, which was causing problems for people trying to fit many bands (and/or with long filenames).  This is now fixed.
+
+Testing revealed that using full order with many bands the initial chebyshev was not well-representing the input parameter dependence on wavelength.  This appeared to be a problem with the polynomial spline fit that is used to initialise the chebyshev coefficients.  Changing to use cspline (which was already used for most other cases) appears to perform better, although the input values are still not perfectly recovered for large numbers of bands.  This has implications for the use of fit_flag=1 to fix the wavelength variation, but fit a constant offset (something I don't think many people are using as not really documented yet!).
+
+
+### galfitm=1.1.4
+
+A few usage improvements:
+   - Allow mixtures of specified and unspecified ("none") bad pixel masks and sigma images.
+   - Output galfit.01 files can now be used to restart galfit
+   - Updated help output (galfit -help)
+   - Quits gracefully (no segfault) if a mask image is supplied which does not match the shape of the input image.
+
+
+## GALAPAGOS
+
+### galapagos-2.0.5
+
+The IDL code for our new version of GALAPAGOS (version 2.0.5) is now available from the project webpage.  As well as enabling multi-band fitting, the new version includes a host of additional features, such as spatially variable PSFs, and runs significantly faster.
+
+Note that we plan to clean this code up a bit over the next couple of weeks and provide more documentation. So, keep an eye out for the announcement of version 2.0.6!﻿
+
+
+### galapagos-2.0.6
+
+A new version of GALAPAGOS, 2.0.6, is now on the MegaMorph webpage, including a new detailed README and examples.
+
+In addition to the improved documentation, this version also includes two new features:
+1) there is now an option for killing long running galfit processes after a user-specifiable time, and
+2) we have introduced a batch mode that allows several machines to work on the same dataset as long as they see the same disk.﻿
+
+
+### galapagos-2.1.0
+
+GALAPAGOS can now optionally take custom sigma images, for use in both the object detection with SExtractor and fitting with GALFIT.  The documentation has also improved.
+
+
+### Subsequent releases of GALAPAGOS
+
+Please see the release notes on GitHub!
