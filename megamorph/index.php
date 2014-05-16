@@ -72,7 +72,7 @@
           and well-tested, of these is the implementation of
           multi-band fitting. This enable a single, consistent,
           wavelength-dependent model to be fit to any collection of
-          pixel registered images. We have also included a method
+          pixel registered images. We have also included an experimental method
           for including a non-parametric component in the fit,
           which can help improve the robustness of fits against the
           effects of features such as spiral arms, bars, nuclear
