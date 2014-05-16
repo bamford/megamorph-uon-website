@@ -1,0 +1,1 @@
+scp -rp megamorph/* ppzastro@granby:public_html/megamorph/
