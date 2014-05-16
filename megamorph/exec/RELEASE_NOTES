@@ -46,6 +46,12 @@ A few usage improvements:
    - Quits gracefully (no segfault) if a mask image is supplied which does not match the shape of the input image.
 
 
+### galfitm=1.1.5
+
+Fixed a bug that was causing segfaults on 32-bit machines.  The 32-bit executable now actually works!
+
+
+
 ## GALAPAGOS
 
 ### galapagos-2.0.5

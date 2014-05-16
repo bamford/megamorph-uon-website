@@ -135,21 +135,22 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.1.4. Executables for various
+          <p>The latest version is 1.1.5. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.1.4-linux-x86_64">Linux
+            <li><a href="exec/galfitm-1.1.5-linux-x86_64">Linux
             x86_64 (64-bit)</a></li>
-            <li><a href="exec/galfitm-1.1.4-linux-i686">Linux
+            <li><a href="exec/galfitm-1.1.5-linux-i686">Linux
             i686 (32-bit)</a></li>
-            <li><a href="exec/galfitm-1.1.4-linux-osx">OSX (Intel
+            <li><a href="exec/galfitm-1.1.5-linux-osx">OSX (Intel
             &gt;10.5)</a></li>
           </ul>
 
           <ul>
             <li><a href=
             "exec/EXAMPLE.GALFITM.INPUT">EXAMPLE.GALFITM.INPUT</a></li>
+	    "exec/EXAMPLE.GALFITM.CONSTRAINTS">EXAMPLE.GALFITM.CONSTRAINTS</a></li>
           </ul>
 
           <p>The source code is not distributed publicly due to
@@ -231,21 +232,22 @@
 
             <li><a href=
             "http://adsabs.harvard.edu/abs/2013MNRAS.435..623V">Vika
-            et al., "MegaMorph - multiwavelength measurement of
+            et al., 2013, "MegaMorph - multiwavelength measurement of
             galaxy structure: S&eacute;rsic profile fits to
             galaxies near and far", 2013, MNRAS, 435, 623</a></li>
 
             <li><a href=
             "http://adsabs.harvard.edu/abs/2013MNRAS.430..330H">Haeussler
-            et al., "MegaMorph - multiwavelength measurement of
+            et al., 2013, "MegaMorph - multiwavelength measurement of
             galaxy structure: complete S&eacute;rsic profile
             information from modern surveys", MNRAS, 430,
             430</a></li>
 
             <li><a href=
-            "http://adsabs.harvard.edu/abs/2014arXiv1404.0377V">Vulcani et al., "Galaxy And Mass Assembly (GAMA):
+            "http://adsabs.harvard.edu/abs/2014MNRAS.441.1340V">Vulcani
+	    et al., 2014, "Galaxy And Mass Assembly (GAMA):
             the wavelength-dependent sizes and profiles of galaxies
-            revealed by MegaMorph", MNRAS in press</a></li>
+            revealed by MegaMorph", MNRAS, 441, 1340</a></li>
 
             <li>Bamford et al., "MegaMorph -
             multi-wavelength measurement of galaxy structure:
