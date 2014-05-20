@@ -165,10 +165,12 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:borishaeussler.astro@gmail.com">Boris Haeussler</a>.</em></p>
 
-	  <p>Development and releases of the GALAPAGOS-2 IDL code are now
-	  hosted on GitHub. A <a
-            href="https://raw.githubusercontent.com/MegaMorph/galapagos/master/EXAMPLE_AND_README/README">README</a>
-	  and a set of examples are included.</p>
+	  <p>Development and releases of the GALAPAGOS-2 IDL code are
+	  now hosted <a
+	   href="https://github.com/MegaMorph/galapagos/">on
+	  GitHub</a>. A detailed <a
+	  href="https://github.com/MegaMorph/galapagos/blob/master/EXAMPLE_AND_README/USAGE.md">usage guide</a> and set of examples are
+	  included.</p>
 	  
 	  <ul>
 	    <li>The latest release is <a href="https://github.com/MegaMorph/galapagos/releases/latest">available here</a>.</li>
