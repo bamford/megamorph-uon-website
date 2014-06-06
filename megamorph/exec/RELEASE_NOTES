@@ -37,7 +37,7 @@ Input lines were being clipped at 1000 characters, which was causing problems fo
 Testing revealed that using full order with many bands the initial chebyshev was not well-representing the input parameter dependence on wavelength.  This appeared to be a problem with the polynomial spline fit that is used to initialise the chebyshev coefficients.  Changing to use cspline (which was already used for most other cases) appears to perform better, although the input values are still not perfectly recovered for large numbers of bands.  This has implications for the use of fit_flag=1 to fix the wavelength variation, but fit a constant offset (something I don't think many people are using as not really documented yet!).
 
 
-### galfitm=1.1.4
+### galfitm-1.1.4
 
 A few usage improvements:
    - Allow mixtures of specified and unspecified ("none") bad pixel masks and sigma images.
@@ -46,17 +46,39 @@ A few usage improvements:
    - Quits gracefully (no segfault) if a mask image is supplied which does not match the shape of the input image.
 
 
-### galfitm=1.1.5
+### galfitm-1.1.5
 
 Fixed a bug that was causing segfaults on 32-bit machines.  The 32-bit executable now actually works!
 
 
-### galfitm=1.1.6
+### galfitm-1.1.6
 
 Fixed to behave when given multi-band data for which one of the images is highly (or even entirely) masked.  The masked data is simply ignored, as usual.  However, on entirely masked images, GALFITM used to crash during production of an internal sigma image (if required).  Now this crash is avoided, but a warning is output if the sky sigma is based on fewer than 100 unmasked pixels.
 
 To help identify highly masked cases, I have added columns NGOOD and NMASK to the BAND_INFO table in the output fits file. These give the number of masked and unmasked pixels, respectively, for each band. So one could, e.g., identify images with more than half the pixels masked using NMASK > NGOOD.
 
+### galfitm-1.1.7
+
+Workaround for highly masked multi-band data.
+
+It was discovered that if a large fraction of an image (or more) is
+masked, but a large amount of freedom is given to the model, the
+covariance matrix is singular, resulting in a bomb at the end of
+fitting.  Experimentation has shown that including an extremely small
+additional factor in the diagonal of the covariance matrix prevents
+the crash.  I'm not entirely happy doing this, but it is probably
+better than a crash.
+
+Note that this issue doesn't directly affect the parameter values
+themselves, just their errors, which should be treated with even more
+scepticism than usual.  However, this is a sign that the fit is not
+well constrained, with multiple sets of Chebyshev coefficients able to
+fit the data equally well.  The actual parameter values may still be
+meaningful (with effectively full freedom to vary with wavelength).
+However, I can't be sure they are reliable without further testing.
+Anyone using data in which large fractions of some of the images are
+masked is strongly advised to check the effect this has on the
+parameter GALFITM produces.
 
 
 ## GALAPAGOS
