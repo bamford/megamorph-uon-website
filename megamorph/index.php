@@ -135,15 +135,15 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.1.7. Executables for various
+          <p>The latest version is 1.1.8. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.1.7-linux-x86_64">Linux
+            <li><a href="exec/galfitm-1.1.8-linux-x86_64">Linux
             x86_64 (64-bit)</a></li>
-            <li><a href="exec/galfitm-1.1.7-linux-i686">Linux
+            <li><a href="exec/galfitm-1.1.8-linux-i686">Linux
             i686 (32-bit)</a></li>
-            <li><a href="exec/galfitm-1.1.7-linux-osx">OSX (Intel
+            <li><a href="exec/galfitm-1.1.8-linux-osx">OSX (Intel
             &gt;10.5)</a></li>
           </ul>
 

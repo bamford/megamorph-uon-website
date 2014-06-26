@@ -57,6 +57,7 @@ Fixed to behave when given multi-band data for which one of the images is highly
 
 To help identify highly masked cases, I have added columns NGOOD and NMASK to the BAND_INFO table in the output fits file. These give the number of masked and unmasked pixels, respectively, for each band. So one could, e.g., identify images with more than half the pixels masked using NMASK > NGOOD.
 
+
 ### galfitm-1.1.7
 
 Workaround for highly masked multi-band data.
@@ -79,6 +80,38 @@ However, I can't be sure they are reliable without further testing.
 Anyone using data in which large fractions of some of the images are
 masked is strongly advised to check the effect this has on the
 parameter GALFITM produces.
+
+
+### galfitm-1.1.8
+
+This fixes a serious problem which occurs in some cases.
+
+When individual band values are given for a parameter, these are
+internally converted to Chebyshev coefficients by first fitting an
+interpolating function, and then using this to generate the CHebyshev
+coefficients.  When a polynomial interpolator is used, the result is
+perfect as Chebyshev functions are polynomials.
+
+However, it was discovered that polynomial interpolation is unstable
+and introduces large errors for high orders.  For this reason, in
+galfitm-1.1.3 and subsequent versions, the cspline interpolator was
+used instead.  This has a serious disadvantage that the resulting
+Chebyshev function does not perfectly interpolate the input band
+parameter values.  When freedom is allowed for the function will vary
+during the fit, this will rarely cause significant problems.  However,
+when the function is held fixed (fitflag = 0) or only allowed to vary
+by a constant (fitflag = 1), the inaccuracies could have serious
+consequences.
+
+Brief testing suggests that polynomial interpolation is stable up to
+n~30, so now cspline interpolation is only used when nbands >=30.  A
+warning message is printed in this case, as the introduced
+inaccuracies remain an issue here.  You should check the output.  For
+example, if you wish to specify individual sky values for nbands >=30,
+these will not be perfectly reproduced by the model.  Perhaps, in this
+situation, one could subtract the sky from each image before fitting,
+allowing the sky to be simply fixed to zero in the feedme file.
+
 
 
 ## GALAPAGOS
