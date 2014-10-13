@@ -143,7 +143,7 @@
             x86_64 (64-bit)</a></li>
             <li><a href="exec/galfitm-1.1.8-linux-i686">Linux
             i686 (32-bit)</a></li>
-            <li><a href="exec/galfitm-1.1.8-linux-osx">OSX (Intel
+            <li><a href="exec/galfitm-1.1.8-osx">OSX (Intel
             &gt;10.5)</a></li>
           </ul>
 
