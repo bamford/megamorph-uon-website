@@ -62,55 +62,35 @@ To help identify highly masked cases, I have added columns NGOOD and NMASK to th
 
 Workaround for highly masked multi-band data.
 
-It was discovered that if a large fraction of an image (or more) is
-masked, but a large amount of freedom is given to the model, the
-covariance matrix is singular, resulting in a bomb at the end of
-fitting.  Experimentation has shown that including an extremely small
-additional factor in the diagonal of the covariance matrix prevents
-the crash.  I'm not entirely happy doing this, but it is probably
-better than a crash.
+It was discovered that if a large fraction of an image (or more) is masked, but a large amount of freedom is given to the model, the covariance matrix is singular, resulting in a bomb at the end of fitting.  Experimentation has shown that including an extremely small additional factor in the diagonal of the covariance matrix prevents the crash.  I'm not entirely happy doing this, but it is probably better than a crash.
 
-Note that this issue doesn't directly affect the parameter values
-themselves, just their errors, which should be treated with even more
-scepticism than usual.  However, this is a sign that the fit is not
-well constrained, with multiple sets of Chebyshev coefficients able to
-fit the data equally well.  The actual parameter values may still be
-meaningful (with effectively full freedom to vary with wavelength).
-However, I can't be sure they are reliable without further testing.
-Anyone using data in which large fractions of some of the images are
-masked is strongly advised to check the effect this has on the
-parameter GALFITM produces.
+Note that this issue doesn't directly affect the parameter values themselves, just their errors, which should be treated with even more scepticism than usual.  However, this is a sign that the fit is not well constrained, with multiple sets of Chebyshev coefficients able to fit the data equally well.  The actual parameter values may still be meaningful (with effectively full freedom to vary with wavelength). However, I can't be sure they are reliable without further testing. Anyone using data in which large fractions of some of the images are masked is strongly advised to check the effect this has on the parameter GALFITM produces.
 
 
 ### galfitm-1.1.8
 
 This fixes a serious problem which occurs in some cases.
 
-When individual band values are given for a parameter, these are
-internally converted to Chebyshev coefficients by first fitting an
-interpolating function, and then using this to generate the CHebyshev
-coefficients.  When a polynomial interpolator is used, the result is
-perfect as Chebyshev functions are polynomials.
+When individual band values are given for a parameter, these are internally converted to Chebyshev coefficients by first fitting an interpolating function, and then using this to generate the CHebyshev coefficients.  When a polynomial interpolator is used, the result is perfect as Chebyshev functions are polynomials.
 
-However, it was discovered that polynomial interpolation is unstable
-and introduces large errors for high orders.  For this reason, in
-galfitm-1.1.3 and subsequent versions, the cspline interpolator was
-used instead.  This has a serious disadvantage that the resulting
-Chebyshev function does not perfectly interpolate the input band
-parameter values.  When freedom is allowed for the function will vary
-during the fit, this will rarely cause significant problems.  However,
-when the function is held fixed (fitflag = 0) or only allowed to vary
-by a constant (fitflag = 1), the inaccuracies could have serious
-consequences.
+However, it was discovered that polynomial interpolation is unstable and introduces large errors for high orders.  For this reason, in galfitm-1.1.3 and subsequent versions, the cspline interpolator was used instead.  This has a serious disadvantage that the resulting Chebyshev function does not perfectly interpolate the input band parameter values.  When freedom is allowed for the function will vary during the fit, this will rarely cause significant problems.  However, when the function is held fixed (fitflag = 0) or only allowed to vary by a constant (fitflag = 1), the inaccuracies could have serious consequences.
 
-Brief testing suggests that polynomial interpolation is stable up to
-n~30, so now cspline interpolation is only used when nbands >=30.  A
-warning message is printed in this case, as the introduced
-inaccuracies remain an issue here.  You should check the output.  For
-example, if you wish to specify individual sky values for nbands >=30,
-these will not be perfectly reproduced by the model.  Perhaps, in this
-situation, one could subtract the sky from each image before fitting,
-allowing the sky to be simply fixed to zero in the feedme file.
+Brief testing suggests that polynomial interpolation is stable up to n~30, so now cspline interpolation is only used when nbands >=30.  A warning message is printed in this case, as the introduced inaccuracies remain an issue here.  You should check the output.  For example, if you wish to specify individual sky values for nbands >=30, these will not be perfectly reproduced by the model.  Perhaps, in this situation, one could subtract the sky from each image before fitting, allowing the sky to be simply fixed to zero in the feedme file.
+
+
+### galfitm-1.1.9
+
+This release fixes a serious bug and adds a useful new feature.
+
+The bug regards the initialization of the Chebychev coefficients in certain cases.  galfitm-1.1.8 addressed an issue with the numerical stability of the polynomial fits for large numbers of bands. Unfortunately it also inadvertently set polynomial fitting to be used where it should not.  The affected case is where the fitting order is less than the number of bands, but greater than one, and the specified initial parameter values do not lie on a polynomial of that order.
+
+For example, one might be fitting 9 bands, but only allowing a particular parameter to vary as a quartic polynomial (corresponding to a fitflag value of 6 in the feedme file).  As input values, one might take the results of running SExtractor on the individual bands, which will not in general correspond to a quartic (5th-order) polynomial. Of course, this is a little contradictory (providing input values which do not match the desired function), but easily done and convenient.
+
+In this case, galfitm must initialize a Chebyshev polynomial which approximates the input values.  In 1.1.8 this was done by first fitting a 9th-order polynomial and then using this to initialise a 5th-order Chebyshev polynomial.  However, the large wiggles typical when interpolating with a high-order polynomial mean that its value at the Chebyshev nodes bear little relation to the input function.  These nodes are used in the standard method of fitting a Chebyshev polynomial to a continuous function.  This causes the resulting Chebshev polynomial to be a bad (sometimes terrible) approximation to the input values.  Instead, previous versions, and now 1.1.9, use cspline interpolation, which is much smoother, and produces more reasonable results.  In future, these problems may be avoided by simply fitting a Chebyshev polynomial of specified order directly to the input values.
+
+Note that this bug did not affect cases where full freedom was allowed (fitflag == number of bands), and neither did it affect cases with fixed (fitflag == 0), or constant (fitflag == 1) wavelength variation. In such situations, a full-order Chebyshev polynomial is initialized perfectly from the polynomial interpolation.
+
+The new feature is the ability to use parameter constraints relative to the reference wavelength.  This means that one can specify that, say, the overall position of an object may vary, but that the positions in each image must lie within some distance of each other.
 
 
 
