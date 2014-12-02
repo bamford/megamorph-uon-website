@@ -93,6 +93,23 @@ Note that this bug did not affect cases where full freedom was allowed (fitflag 
 The new feature is the ability to use parameter constraints relative to the reference wavelength.  This means that one can specify that, say, the overall position of an object may vary, but that the positions in each image must lie within some distance of each other.
 
 
+### galfitm-1.1.10
+
+The bug described as fixed by galfitm-1.1.9 was only partly fixed.  There was a remaining mistake which could mean that the wring interpolation method was sometimes used.  This is now fixed and test show it is working as expected.  A more prominent warning is printed out in cases where the interpolation is approximate.
+
+
+### galfitm-1.1.11
+
+This version fixes an intermittent segfault related to the constraints file, especially when using strong coupling between more than two components.
+
+
+### galfitm-1.1.12
+
+This version finally enables the position angle (PA) to wrap around the ends of the standard range (+-90, or +-180 if using Fourier modes, although they are still disabled for now).  Previously, if the initial PA value was on the other side of the range edge to the "true" value, then the fit may have become "stuck" (probably close to the boundary).  Now it will wrap around to the other side of the range.  This also works for wavelength-dependent PA, although here only the zeroth Chebyshev coefficient wraps (roughly the value at the average wavelength), and the values in each band are allowed to vary within the standard range centred on this reference value.
+
+In reality this lack of wrapping was rarely an issue, e.g. for GALAPAGOS, as the initial PA tends to be close to the true value.  Note that in order for the wrapping to work, one must not specify additional soft constraints on PA.
+
+
 
 ## GALAPAGOS
 

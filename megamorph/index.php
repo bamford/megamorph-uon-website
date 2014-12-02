@@ -135,17 +135,17 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.1.9. Executables for various
+          <p>The latest version is 1.1.12. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.1.9-linux-x86_64">Linux
+            <li><a href="exec/galfitm-1.1.12-linux-x86_64">Linux
             x86_64 (64-bit)</a></li>
 	    <!--
-	    <li><a href="exec/galfitm-1.1.9-linux-i686">Linux
+	    <li><a href="exec/galfitm-1.1.12-linux-i686">Linux
             i686 (32-bit)</a></li>
 	    -->
-            <li><a href="exec/galfitm-1.1.9-osx">OSX (Intel
+            <li><a href="exec/galfitm-1.1.12-osx">OSX (Intel
             &gt;10.5)</a></li>
           </ul>
 
@@ -258,10 +258,11 @@
             multi-wavelength measurement of galaxy structure:
             non-parametric galaxy components", in prep.</li>
 
-            <li>Vika et al., "MegaMorph -
-            multi-wavelength measurement of galaxy structure: physi
-            cally meaningful bulge-disk decomposition of galaxies
-            near and far", in prep.</li>
+            <li><a href=
+            "http://adsabs.harvard.edu/abs/2014MNRAS.444.3603V">Vika
+            et al., 2014, "MegaMorph - multi-wavelength measurement of
+            galaxy structure: physically meaningful bulge-disk
+            decomposition of galaxies near and far", MNRAS, 444, 3603</a></li>
 
             <li>Haeussler et al., "MegaMorph -
             multi-wavelength measurement of galaxy structure:
