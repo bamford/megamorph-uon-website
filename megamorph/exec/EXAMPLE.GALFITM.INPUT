@@ -30,10 +30,14 @@ B) imgblock.fits
 # (if an individual filename is specified as "none", then that sigma
 #  image will be made from data; if the whole entry consists of just a
 #  single "none", then all sigma images will be made from data.)
+# One can also add a minimum sigma value, such that any galfit-created
+# sigma image will have a minimum of that value times the sky-subtracted
+# input data.
 C) none
 C) sig-r.fits,sig-g.fits,sig-i.fits
 C) none,none,none
 C) sig-r.fits,none,sig-i.fits         # perhaps unwise to do this in practice
+C) none    0.1			      # min. sigma is 10% of the data flux
 
 # Input PSF image (CSL of <nbands> FITS filenames) 
 # and a single diffusion kernel (FITS filename, # or omitted)
@@ -89,6 +93,20 @@ V) 0     # Use standard Levenburg-Marquardt algorithm
 V) 1	 # Use MultiNest sampling algorithm (experimental and slow!)
 V) 1,0,500,0.8,0.5,100000   # Customise MultiNest options:
                             # ceff,nlive,efr,tol,maxiter
+
+# Output options
+# Valid options: blank,input,model,residual -- as usual
+#                component -- individual model components
+#                psf -- input psf image
+#                sigma -- sigma image (input or created)
+#                nonparam -- nonparam image (if appropriate)
+#                datasub -- input minus nonparam image (if appropriate)
+#                itertable -- table of parameters at each iteration
+W) default  # == blank,input,model,residual and assumed if omitted
+W) none     # (or any other invalid option) no images output
+W) model    # or any other valid option
+W) model,residual    # or any comma seaprated list of valid options
+
 
 # THE OBJECT LIST BELOW can be however long or short as the complexity
 # requires.  The user has complete freedom to mix and match the components
@@ -180,6 +198,23 @@ V) 1,0,500,0.8,0.5,100000   # Customise MultiNest options:
  9) 0.72       1       # axis ratio (b/a)   
 10) -25.2      1       # position angle (PA)  [Degrees: Up=0, Left=90]
  Z) 0                  #  Skip this model in output image?  (yes=1, no=0)
+
+
+# Corser function ---------------------------------------------------------------
+
+ 0) corser             # Object type
+ 1) 300.       1       # position x [pixel]
+ 2) 357.4      1       # position y [pixel]
+ 3) 17.2       1       #  mu(Rb) [surface brightness mag. at Rb]
+ 4) 2.5        1       #    Rb               [pixels]
+ 5) 0.5        1       #    alpha  (sharpness of transition)
+ 6) 0.5        1       #    gamma  (inner powerlaw slope)
+ 7) 5.0        1       #  R_e (half-light radius)   [pix]
+ 8) 3.5        1       #  Sersic index n (de Vaucouleurs n=4) 
+ 9) 0.72       1       #  axis ratio (b/a)  
+10) -25.2      1       #  position angle (PA) [deg: Up=0, Left=90]
+ Z) 0                  #  Skip this model in output image?  (yes=1, no=0)
+
 
 # deVaucouleur function --------------------------------------------------------
 

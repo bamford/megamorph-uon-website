@@ -2,80 +2,50 @@
 
 ## GALFITM
 
-### galfitm-1.0.0
+### galfitm-1.2.0
 
-The first release of MegaMorph's GALFITM is now available!﻿
+This version includes a lot of changes since 1.1.12.  Backward compatibility should have been preserved, while adding features and flexibility.  However, due to changes merged in from standard galfit, fits performed using an internally-generated sigma image will give slightly different results to previous versions.  As usual galfitm is research software, and so should be used carefully and tested for your particular use case.  I have not labelled this a beta release, but one should be particulalrly attentive to the potential for bugs given the number of modifications made.  Please report any issues, ideally via the Google+ group.  The changes include:
 
+1) Merging in the changes to standard galfit from version 3.0.2 to the current version 3.0.5.  The most significant aspects of this are:
+   a) the self-generated sigma image is now smoothed with a Gaussian with sigma of 2 pixels;
+   b) a flag string is included in the header and FIT_INFO fits table, which gives some codes for possible issues encountered;
+   c) parameter values output to the screen or fit.log are highlighted with asterisks if they are potentially affected by convergence problems.
 
-### galfitm-1.1.0
+2) The corsair (v3) extension of galfit by Paolo Bonfini has been merged in.  This adds the core-Sersic (corser) model.  For further details, see http://astronomy.swin.edu.au/~pbonfini/galfit-corsair/ Unlike the standard galfit-corsair version, it should be possible to specify constraints on all the corser parameters.
 
-The only change is a tweak to the non-parametric method.  So, don't worry about upgrading if you aren't using that (highly experimental!) option.
+3) An additional (optional) line has been added to the feedme input file, labelled by 'W)'.  This can specify a series of output options, controlling what images and tables get put into the output fits file.  By default this behaves like standard galfit (psf images are no longer output by default).  However, one could chose to be complete or minimal, as desired.  One can also choose to output tables containing the parameter values at each iteration.
 
-More details… During the creation of the non-parametric image, a mask is applied to remove negative pixels and faint "ringing" features introduced buy the wavelet filtering.  Previously, when performing multi-band fitting with a non-parametric component, the same mask was always applied to all bands.  This is sensible when using SED homogenisation [i.e., "U) 1", which forces every pixel in the nonparam image to have the same SED], but is unnecessary when SED homogenisation is disabled [i.e. "U) -1"].  In this latter case the nonparam image is constructed for each band independently.  Now, in version 1.1.0, when SED homogenisation is turned off, the masking is done independently too.  Thanks to +Lee Kelvin and +Ulli Kuchner for highlighting this.
+4) On the sigma image feedme line, labelled 'C)', one may include a value after the filename(s) [or none(s)].  This specifies the minimum value of any galfit-created sigma image, as a fraction of the sky-subtracted data flux in the corresponding pixel.  I.e. specifying '0.05' would create the sigma image as normal but then limit the minimum to 5% of the signal.  This may be useful for accounting for expected systematic wiggles in the light profile of galaxies, to avoid overfitting nuclei, spiral arm features, etc.
 
+5) The output log/feedme file (usually written to galfit.01, etc.) now inherits the name of the output fits file (appended with galfit.01, etc.).  This contains the Chebyshev parameters, so is the most faithful way to restart a fit.  However, one may like to modify the band values, so a log/feedme file containing these is also output (the same name, but with .band appended).
 
-### galfitm-1.1.1
+6) Band values are now also output to the screen at the start of the fit, which makes verifying the input and spotting mistakes easier.
 
-This version had a quickly discovered bug on linux, regarding the initialization of char arrays allocated on the heap instead of the stack.  It was therefore not distributed publicly.  See galfitm-1.1.2 for description of functional changes.
+7) As before, a record of the fit parameters, chisq, etc. is output to fit.log.  This now contains details of all the bands.
 
+8) Some of the screen output formatting has been tweaked.
 
-### galfitm-1.1.2
+9) The boxiness/diskiness parameter C0 appears to work now without crashing.
 
-A new version of GALFITM is available: 1.1.2.  This one is for those of you who want to fit a lot of images simultaneously.
-
-It was noticed that previous versions were limited to fitting a maximum of 11 bands.  This was not done for any particular reason, the method is general for an arbitrary number of bands.  However, for very large numbers of bands, some minor changes to the memory management are required.  For now the maximum number has been increased to 5000, which should be plenty for the time being!
-
-It was also noticed that recent versions used libraries that were compiled without full optimisation flags.  These flags are now enabled, so a small speed increase may be noticeable.
-
-
-### galfitm-1.1.3
-
-Fixes a	bug with input line length, and improve many-band stability.
-
-Input lines were being clipped at 1000 characters, which was causing problems for people trying to fit many bands (and/or with long filenames).  This is now fixed.
-
-Testing revealed that using full order with many bands the initial chebyshev was not well-representing the input parameter dependence on wavelength.  This appeared to be a problem with the polynomial spline fit that is used to initialise the chebyshev coefficients.  Changing to use cspline (which was already used for most other cases) appears to perform better, although the input values are still not perfectly recovered for large numbers of bands.  This has implications for the use of fit_flag=1 to fix the wavelength variation, but fit a constant offset (something I don't think many people are using as not really documented yet!).
+For details of how to use any new models or options, see the
+EXAMPLE.GALFITM.INPUT file.
 
 
-### galfitm-1.1.4
+### galfitm-1.1.12
 
-A few usage improvements:
-   - Allow mixtures of specified and unspecified ("none") bad pixel masks and sigma images.
-   - Output galfit.01 files can now be used to restart galfit
-   - Updated help output (galfit -help)
-   - Quits gracefully (no segfault) if a mask image is supplied which does not match the shape of the input image.
+This version finally enables the position angle (PA) to wrap around the ends of the standard range (+-90, or +-180 if using Fourier modes, although they are still disabled for now).  Previously, if the initial PA value was on the other side of the range edge to the "true" value, then the fit may have become "stuck" (probably close to the boundary).  Now it will wrap around to the other side of the range.  This also works for wavelength-dependent PA, although here only the zeroth Chebyshev coefficient wraps (roughly the value at the average wavelength), and the values in each band are allowed to vary within the standard range centred on this reference value.
+
+In reality this lack of wrapping was rarely an issue, e.g. for GALAPAGOS, as the initial PA tends to be close to the true value.  Note that in order for the wrapping to work, one must not specify additional soft constraints on PA.
 
 
-### galfitm-1.1.5
+### galfitm-1.1.11
 
-Fixed a bug that was causing segfaults on 32-bit machines.  The 32-bit executable now actually works!
-
-
-### galfitm-1.1.6
-
-Fixed to behave when given multi-band data for which one of the images is highly (or even entirely) masked.  The masked data is simply ignored, as usual.  However, on entirely masked images, GALFITM used to crash during production of an internal sigma image (if required).  Now this crash is avoided, but a warning is output if the sky sigma is based on fewer than 100 unmasked pixels.
-
-To help identify highly masked cases, I have added columns NGOOD and NMASK to the BAND_INFO table in the output fits file. These give the number of masked and unmasked pixels, respectively, for each band. So one could, e.g., identify images with more than half the pixels masked using NMASK > NGOOD.
+This version fixes an intermittent segfault related to the constraints file, especially when using strong coupling between more than two components.
 
 
-### galfitm-1.1.7
+### galfitm-1.1.10
 
-Workaround for highly masked multi-band data.
-
-It was discovered that if a large fraction of an image (or more) is masked, but a large amount of freedom is given to the model, the covariance matrix is singular, resulting in a bomb at the end of fitting.  Experimentation has shown that including an extremely small additional factor in the diagonal of the covariance matrix prevents the crash.  I'm not entirely happy doing this, but it is probably better than a crash.
-
-Note that this issue doesn't directly affect the parameter values themselves, just their errors, which should be treated with even more scepticism than usual.  However, this is a sign that the fit is not well constrained, with multiple sets of Chebyshev coefficients able to fit the data equally well.  The actual parameter values may still be meaningful (with effectively full freedom to vary with wavelength). However, I can't be sure they are reliable without further testing. Anyone using data in which large fractions of some of the images are masked is strongly advised to check the effect this has on the parameter GALFITM produces.
-
-
-### galfitm-1.1.8
-
-This fixes a serious problem which occurs in some cases.
-
-When individual band values are given for a parameter, these are internally converted to Chebyshev coefficients by first fitting an interpolating function, and then using this to generate the CHebyshev coefficients.  When a polynomial interpolator is used, the result is perfect as Chebyshev functions are polynomials.
-
-However, it was discovered that polynomial interpolation is unstable and introduces large errors for high orders.  For this reason, in galfitm-1.1.3 and subsequent versions, the cspline interpolator was used instead.  This has a serious disadvantage that the resulting Chebyshev function does not perfectly interpolate the input band parameter values.  When freedom is allowed for the function will vary during the fit, this will rarely cause significant problems.  However, when the function is held fixed (fitflag = 0) or only allowed to vary by a constant (fitflag = 1), the inaccuracies could have serious consequences.
-
-Brief testing suggests that polynomial interpolation is stable up to n~30, so now cspline interpolation is only used when nbands >=30.  A warning message is printed in this case, as the introduced inaccuracies remain an issue here.  You should check the output.  For example, if you wish to specify individual sky values for nbands >=30, these will not be perfectly reproduced by the model.  Perhaps, in this situation, one could subtract the sky from each image before fitting, allowing the sky to be simply fixed to zero in the feedme file.
+The bug described as fixed by galfitm-1.1.9 was only partly fixed.  There was a remaining mistake which could mean that the wring interpolation method was sometimes used.  This is now fixed and test show it is working as expected.  A more prominent warning is printed out in cases where the interpolation is approximate.
 
 
 ### galfitm-1.1.9
@@ -93,31 +63,94 @@ Note that this bug did not affect cases where full freedom was allowed (fitflag 
 The new feature is the ability to use parameter constraints relative to the reference wavelength.  This means that one can specify that, say, the overall position of an object may vary, but that the positions in each image must lie within some distance of each other.
 
 
-### galfitm-1.1.10
+### galfitm-1.1.8
 
-The bug described as fixed by galfitm-1.1.9 was only partly fixed.  There was a remaining mistake which could mean that the wring interpolation method was sometimes used.  This is now fixed and test show it is working as expected.  A more prominent warning is printed out in cases where the interpolation is approximate.
+This fixes a serious problem which occurs in some cases.
+
+When individual band values are given for a parameter, these are internally converted to Chebyshev coefficients by first fitting an interpolating function, and then using this to generate the CHebyshev coefficients.  When a polynomial interpolator is used, the result is perfect as Chebyshev functions are polynomials.
+
+However, it was discovered that polynomial interpolation is unstable and introduces large errors for high orders.  For this reason, in galfitm-1.1.3 and subsequent versions, the cspline interpolator was used instead.  This has a serious disadvantage that the resulting Chebyshev function does not perfectly interpolate the input band parameter values.  When freedom is allowed for the function will vary during the fit, this will rarely cause significant problems.  However, when the function is held fixed (fitflag = 0) or only allowed to vary by a constant (fitflag = 1), the inaccuracies could have serious consequences.
+
+Brief testing suggests that polynomial interpolation is stable up to n~30, so now cspline interpolation is only used when nbands >=30.  A warning message is printed in this case, as the introduced inaccuracies remain an issue here.  You should check the output.  For example, if you wish to specify individual sky values for nbands >=30, these will not be perfectly reproduced by the model.  Perhaps, in this situation, one could subtract the sky from each image before fitting, allowing the sky to be simply fixed to zero in the feedme file.
 
 
-### galfitm-1.1.11
+### galfitm-1.1.7
 
-This version fixes an intermittent segfault related to the constraints file, especially when using strong coupling between more than two components.
+Workaround for highly masked multi-band data.
+
+It was discovered that if a large fraction of an image (or more) is masked, but a large amount of freedom is given to the model, the covariance matrix is singular, resulting in a bomb at the end of fitting.  Experimentation has shown that including an extremely small additional factor in the diagonal of the covariance matrix prevents the crash.  I'm not entirely happy doing this, but it is probably better than a crash.
+
+Note that this issue doesn't directly affect the parameter values themselves, just their errors, which should be treated with even more scepticism than usual.  However, this is a sign that the fit is not well constrained, with multiple sets of Chebyshev coefficients able to fit the data equally well.  The actual parameter values may still be meaningful (with effectively full freedom to vary with wavelength). However, I can't be sure they are reliable without further testing. Anyone using data in which large fractions of some of the images are masked is strongly advised to check the effect this has on the parameter GALFITM produces.
 
 
-### galfitm-1.1.12
+### galfitm-1.1.6
 
-This version finally enables the position angle (PA) to wrap around the ends of the standard range (+-90, or +-180 if using Fourier modes, although they are still disabled for now).  Previously, if the initial PA value was on the other side of the range edge to the "true" value, then the fit may have become "stuck" (probably close to the boundary).  Now it will wrap around to the other side of the range.  This also works for wavelength-dependent PA, although here only the zeroth Chebyshev coefficient wraps (roughly the value at the average wavelength), and the values in each band are allowed to vary within the standard range centred on this reference value.
+Fixed to behave when given multi-band data for which one of the images is highly (or even entirely) masked.  The masked data is simply ignored, as usual.  However, on entirely masked images, GALFITM used to crash during production of an internal sigma image (if required).  Now this crash is avoided, but a warning is output if the sky sigma is based on fewer than 100 unmasked pixels.
 
-In reality this lack of wrapping was rarely an issue, e.g. for GALAPAGOS, as the initial PA tends to be close to the true value.  Note that in order for the wrapping to work, one must not specify additional soft constraints on PA.
+To help identify highly masked cases, I have added columns NGOOD and NMASK to the BAND_INFO table in the output fits file. These give the number of masked and unmasked pixels, respectively, for each band. So one could, e.g., identify images with more than half the pixels masked using NMASK > NGOOD.
+
+
+### galfitm-1.1.5
+
+Fixed a bug that was causing segfaults on 32-bit machines.  The 32-bit executable now actually works!
+
+
+### galfitm-1.1.4
+
+A few usage improvements:
+   - Allow mixtures of specified and unspecified ("none") bad pixel masks and sigma images.
+   - Output galfit.01 files can now be used to restart galfit
+   - Updated help output (galfit -help)
+   - Quits gracefully (no segfault) if a mask image is supplied which does not match the shape of the input image.
+
+
+### galfitm-1.1.3
+
+Fixes a	bug with input line length, and improve many-band stability.
+
+Input lines were being clipped at 1000 characters, which was causing problems for people trying to fit many bands (and/or with long filenames).  This is now fixed.
+
+Testing revealed that using full order with many bands the initial chebyshev was not well-representing the input parameter dependence on wavelength.  This appeared to be a problem with the polynomial spline fit that is used to initialise the chebyshev coefficients.  Changing to use cspline (which was already used for most other cases) appears to perform better, although the input values are still not perfectly recovered for large numbers of bands.  This has implications for the use of fit_flag=1 to fix the wavelength variation, but fit a constant offset (something I don't think many people are using as not really documented yet!).
+
+
+### galfitm-1.1.2
+
+A new version of GALFITM is available: 1.1.2.  This one is for those of you who want to fit a lot of images simultaneously.
+
+It was noticed that previous versions were limited to fitting a maximum of 11 bands.  This was not done for any particular reason, the method is general for an arbitrary number of bands.  However, for very large numbers of bands, some minor changes to the memory management are required.  For now the maximum number has been increased to 5000, which should be plenty for the time being!
+
+It was also noticed that recent versions used libraries that were compiled without full optimisation flags.  These flags are now enabled, so a small speed increase may be noticeable.
+
+
+### galfitm-1.1.1
+
+This version had a quickly discovered bug on linux, regarding the initialization of char arrays allocated on the heap instead of the stack.  It was therefore not distributed publicly.  See galfitm-1.1.2 for description of functional changes.
+
+
+### galfitm-1.1.0
+
+The only change is a tweak to the non-parametric method.  So, don't worry about upgrading if you aren't using that (highly experimental!) option.
+
+More details… During the creation of the non-parametric image, a mask is applied to remove negative pixels and faint "ringing" features introduced buy the wavelet filtering.  Previously, when performing multi-band fitting with a non-parametric component, the same mask was always applied to all bands.  This is sensible when using SED homogenisation [i.e., "U) 1", which forces every pixel in the nonparam image to have the same SED], but is unnecessary when SED homogenisation is disabled [i.e. "U) -1"].  In this latter case the nonparam image is constructed for each band independently.  Now, in version 1.1.0, when SED homogenisation is turned off, the masking is done independently too.  Thanks to +Lee Kelvin and +Ulli Kuchner for highlighting this.
+
+
+### galfitm-1.0.0
+
+The first release of MegaMorph's GALFITM is now available!﻿
+
 
 
 
 ## GALAPAGOS
 
-### galapagos-2.0.5
+### Recent releases of GALAPAGOS
 
-The IDL code for our new version of GALAPAGOS (version 2.0.5) is now available from the project webpage.  As well as enabling multi-band fitting, the new version includes a host of additional features, such as spatially variable PSFs, and runs significantly faster.
+Please see the release notes on GitHub!
 
-Note that we plan to clean this code up a bit over the next couple of weeks and provide more documentation. So, keep an eye out for the announcement of version 2.0.6!﻿
+
+### galapagos-2.1.0
+
+GALAPAGOS can now optionally take custom sigma images, for use in both the object detection with SExtractor and fitting with GALFIT.  The documentation has also improved.
 
 
 ### galapagos-2.0.6
@@ -129,11 +162,8 @@ In addition to the improved documentation, this version also includes two new fe
 2) we have introduced a batch mode that allows several machines to work on the same dataset as long as they see the same disk.﻿
 
 
-### galapagos-2.1.0
+### galapagos-2.0.5
 
-GALAPAGOS can now optionally take custom sigma images, for use in both the object detection with SExtractor and fitting with GALFIT.  The documentation has also improved.
+The IDL code for our new version of GALAPAGOS (version 2.0.5) is now available from the project webpage.  As well as enabling multi-band fitting, the new version includes a host of additional features, such as spatially variable PSFs, and runs significantly faster.
 
-
-### Subsequent releases of GALAPAGOS
-
-Please see the release notes on GitHub!
+Note that we plan to clean this code up a bit over the next couple of weeks and provide more documentation. So, keep an eye out for the announcement of version 2.0.6!﻿

@@ -70,14 +70,14 @@
           "http://astro-staff.uibk.ac.at/~m.barden/galapagos/">GALAPAGOS</a>
           with several novel developments. The most significant,
           and well-tested, of these is the implementation of
-          multi-band fitting. This enable a single, consistent,
+          <b>multi-band</b> fitting. This enables a single, consistent,
           wavelength-dependent model to be fit to any collection of
           pixel registered images. We have also included an experimental method
-          for including a non-parametric component in the fit,
+          for including a <b>non-parametric</b> component in the fit,
           which can help improve the robustness of fits against the
           effects of features such as spiral arms, bars, nuclear
           sources, and un-masked neighbours. Finally, we have added
-          the ability to use MultiNest sampling as an alternative
+          the ability to use <b>MultiNest sampling</b> as an alternative
           to Levenburg-Marquardt minimisation, but this is not yet
           recommended for general use.</p>
 
@@ -126,6 +126,9 @@
           that this is work in progress, and while some features
           are complete and well-tested, others are less so.</p>
 
+          <p>For important information about recent changes, please
+          consult the release notes.</p>
+
           <ul>
 	    <li><a href="exec/RELEASE_NOTES">RELEASE_NOTES</a></li>
 	  </ul>
@@ -135,8 +138,23 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.1.12. Executables for various
+          <p>The latest version is 1.2.0. Executables for various
           platforms can be downloaded from the links below.</p>
+
+          <ul>
+            <li><a href="exec/galfitm-1.2.0-linux-x86_64">Linux
+            x86_64 (64-bit)</a></li>
+	    <!--
+	    <li><a href="exec/galfitm-1.2.0-linux-i686">Linux
+            i686 (32-bit)</a></li>
+	    -->
+            <li><a href="exec/galfitm-1.2.0-osx">OSX (Intel
+            &gt;10.5)</a></li>
+          </ul>
+
+          <p>The previous version was 1.1.12.  Executables are still
+          available below, in case of any issues accompanying the numerous changes
+          in 1.2.0.</p>
 
           <ul>
             <li><a href="exec/galfitm-1.1.12-linux-x86_64">Linux
@@ -148,7 +166,7 @@
             <li><a href="exec/galfitm-1.1.12-osx">OSX (Intel
             &gt;10.5)</a></li>
           </ul>
-
+	  
           <ul>
             <li><a href=
             "exec/EXAMPLE.GALFITM.INPUT">EXAMPLE.GALFITM.INPUT</a></li>
@@ -183,12 +201,14 @@
           <ul>
             <li>GALFITM should be backward compatible with GALFIT3.
             On single-band data most of the code executed is
-            identical, however constraints are handled in a
-            slightly different way, which means that you will
-            occasionally see significant differences in the final
-            parameters returned by GALFITM and GALFIT3. Please let
-            us know if you have a FEEDME file that works correctly
-            with GALFIT3 but not GALFITM.</li>
+            identical, however constraints are handled in a slightly
+            different way, which means that you will occasionally see
+            significant differences in the final parameters returned
+            by GALFITM and GALFIT3. Please let us know if you have a
+            FEEDME file that works correctly with GALFIT3 but not
+            GALFITM.  Note however, that there are many additional
+            options in GALFITM, and so even single-band GALFITM FEEDME
+            files will often not work with GALFIT3.</li>
 
             <li>Use of truncations and fourier modes is not
             completely implemented, and entirely untested, in
@@ -202,14 +222,21 @@
             work with any of the standard GALFIT functions. However,
             if you discover anything odd, please let us know.</li>
 
-            <li>GALFITM is currently based upon GALFIT-3.0.2. It
-            therefore does not include some of Chien Peng's latest
-            additions to GALFIT (on version 3.0.5 at time of
-            writing). These changes are minor, primarily the
+            <li>GALFITM prior to version 1.2.0 was based upon
+            GALFIT-3.0.2. It therefore did not include some of Chien
+            Peng's latest additions to GALFIT (on version 3.0.5 at
+            time of writing).  These are merged into GALFITM version
+            1.2.0. The changes are mostly minor, primarily the
             addition of flags providing information about potential
-            issues with a fit. They generally do not result in
-            significant changes to fitting results, but users
-            should be aware of potential discrepancies.</li>
+            issues with a fit. However, internally-generated sigma
+            images are now smoothed, which generally results in
+            small (but occasionally significant) changes to fitting
+            results.  Feedback on this is welcomed.</li>
+
+	    <li>Although implemented, the use of MultiNest sampling
+	    has not been tested much, and is very slow, prohibitively
+	    so for models with multiple components and wavelength
+	    freedom.  It is definitely not ready for serious use.</li>
 
             <li>GALFITM is still in active development, and there
             are some rough areas that could do with some work to
@@ -219,7 +246,8 @@
             and polished. New versions, and the changes involved,
             will be announced via our Google+ <a
             href="https://plus.google.com/103670520789030779243/posts">page</a>
-            and <a href="https://plus.google.com/communities/101731295964036445086">community</a>.</li>
+            and <a
+            href="https://plus.google.com/communities/101731295964036445086">community</a>.</li>
           </ul>
 
           <h2>Papers</h2>
