@@ -92,7 +92,8 @@
 	  Marco Barden (Innsbruck), Chien Peng (Carnegie Obs./GMTO),
 	  Arianna Cortesi (Nottingham/IAG-USP), Rebecca Kennedy
 	  (Nottingham), Jim Cresswell (CMU-Q), Andrea Borch
-	  (CMU-Q).</p>
+	  (CMU-Q).  The core-S&eacute;rsic model was implemented by Paolo
+	  Bonfini (Swinburne).</p>
 
           <p>Our developments build upon the existing code and efforts
           of Chien Peng (GALFIT) and Marco Barden (GALAPAGOS), and we
@@ -216,11 +217,12 @@
             multi-band data, and are willing to help with testing,
             then get in touch!</li>
 
-            <li>Almost all our testing has used only the Sersic, PSF,
-            exponential disc and sky functions. The way that we have
-            implemented the multi-band method means that it should
-            work with any of the standard GALFIT functions. However,
-            if you discover anything odd, please let us know.</li>
+            <li>Almost all our testing has used only the
+            S&eacute;rsic, PSF, exponential disc and sky
+            functions. The way that we have implemented the multi-band
+            method means that it should work with any of the standard
+            GALFIT functions. However, if you discover anything odd,
+            please let us know.</li>
 
             <li>GALFITM prior to version 1.2.0 was based upon
             GALFIT-3.0.2. It therefore did not include some of Chien
@@ -296,6 +298,12 @@
             multi-wavelength measurement of galaxy structure:
             separating the properties of spheroid and disk
             components in modern surveys", in prep.</li>
+
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2014PASP..126..935B">Bonfini,
+            2014, "GALFIT-CORSAIR: Implementing the Core-S&eacute;rsic Model
+            Into GALFIT", PASP, 126, 935</a></li>	    
           </ul>
         </div><!-- /.span7 -->
       </div>
