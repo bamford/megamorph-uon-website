@@ -2,13 +2,20 @@
 # operation	(see below)   range
 
     3              n        0.7 to 5    # Soft constraint: Constrains the 
-					# sersic index n to within values 
-				        # from 0.7 to 5.
+					# sersic index n to within
+				        # ABSOLUTE values from 0.7 to 5.
 
     2	  	   x	     -1  0.5	# Soft constraint: Constrains 
 					# x-position of component
 					# 2 to within +0.5 and -1 of the
-					# input value.
+					# INPUT value.
+
+    2	  	   x	     -1 in 0.5	# Alternative version of above.
+
+    1	  	   x	     -2.0 ref 2.0   # Soft constraint: Constrains
+					   # x-position of component
+					   # 1 to within +2.0 and -2.0 of the
+					   # value at the REFERENCE wavelength.
 
     1	  	   re	     factor 3.0	   # Soft constraint: Constrains the 
 					   # Re to be within a factor of 3 of the
@@ -114,7 +121,7 @@
 #   are allowing the parameters more freedom to vary with wavelength,
 #   and you wish them to be fully-coupled then you must specify
 #   constraints for all the free Chebyshev coefficients individually.
-#   Hard coupling some, but not all, Chebyshev coefficients for a
+#   Hard coupling some, but not all, free Chebyshev coefficients for a
 #   parameter is inadvisable.
 
 # Individual band values:
@@ -123,6 +130,10 @@
 #   is the label of the band in question, as specified in parameter A1
 #   of the GALFITM input file.  One may also append "_all" to
 #   explicitly indicate all bands.
+#   These contraints do not currently appear to be respected for
+#   higher-order parameters (e.g. boxiness, fourier and bending modes).
+#   If you need to constrain these parameters, please consider constraints
+#   on the Chebyshev values (i.e. 'c_0' rather than just 'c')
 
 # Cheybshev coefficient values:
 #   If you wish to constrain specific Chebyshev coefficients, the

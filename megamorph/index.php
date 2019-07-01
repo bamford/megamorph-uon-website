@@ -35,7 +35,9 @@
                   })();
                 
   </script>
-  <a href="https://plus.google.com/103670520789030779243" rel="publisher"/>
+<!--
+<a href="https://plus.google.com/103670520789030779243" rel="publisher"/>
+-->
 </head>
 
 <body>
@@ -113,13 +115,10 @@
 	  code.</p>
 
           <p>If you have any questions or problems, you can ask for
-          help on our <a
-           href="https://plus.google.com/communities/101731295964036445086">Google+
-          community group</a>. As new versions are produced they will
-          be announced on our <a
-           href="https://plus.google.com/103670520789030779243/posts">Google+
-          page</a>, so please follow that to keep up-to-date with
-          developments.</p>
+          help on our Facebook <a
+          href="https://www.facebook.com/groups/295177727820811/">group</a>.
+          As new versions are produced they will be announced there,
+          so please join to keep up-to-date with developments.</p>
 
           <h2>Downloads</h2>
 
@@ -139,17 +138,39 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.2.1. Executables for various
+          <p>The latest version is 1.4.2. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.2.1-linux-x86_64">Linux
+            <li><a href="exec/galfitm-1.4.2-linux-x86_64">v.1.4.2 Linux
             x86_64 (64-bit)</a></li>
-	    <li><a href="exec/galfitm-1.2.1-linux-i686">Linux
+<!--
+	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.4.2 Linux
             i686 (32-bit)</a></li>
-            <li><a href="exec/galfitm-1.2.1-osx">OSX (Intel
-            Yosemite/Mavericks/Mountain Lion)</a></li>
+-->
+            <li><a href="exec/galfitm-1.4.2-osx">v.1.4.2 OSX/MacOS (Yosemite onwards)</a></li>
           </ul>
+
+	  <p>Versions 1.4.x enable the use of higher-order functions
+          (bending, fourier modes, rotation) from GALFIT3. For models
+          that do not make use of these features, 1.4.x should behave
+          as before. While we fully ascertain that this is the case,
+          we continue to maintain the 1.2.x branch. The latest
+          versions are available below.</p>
+
+          <ul>
+            <li><a href="exec/galfitm-1.2.5-linux-x86_64">v.1.2.5 Linux
+            x86_64 (64-bit)</a></li>
+<!--
+	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.5 Linux
+            i686 (32-bit)</a></li>
+-->
+            <li><a href="exec/galfitm-1.2.5-osx">v.1.2.5 OSX/MacOS (Yosemite onwards)</a></li>
+          </ul>
+
+	  <p>Note that, for comparisons and compatibility purposes,
+	  any previous version can be obtained by substituting the
+	  version number in the above links.</p>
 	  
           <p>Documented example input files:</p>
 
@@ -196,13 +217,17 @@
             options in GALFITM, and so even single-band GALFITM FEEDME
             files will often not work with GALFIT3.</li>
 
-            <li>Use of truncations and fourier modes is not
-            completely implemented, and entirely untested, in
-            GALFITM. If you need to use these features with
-            multi-band data, and are willing to help with testing,
-            then get in touch!</li>
+            <li>Use of bending modes, fourier modes and rotations
+            (e.g. to model distortions and spiral arms) is <b>now
+            implemented</b> in version 1.4.x of GALFITM, with full
+            multi-band support. These features have received a
+            reasonable amount of internal testing, but users are
+            recommended to carefully check their results. Please get
+            in touch with any issues or success stories. Truncations
+            are partially implemented but probably do not work
+            correctly - use them at your own risk!</li>
 
-            <li>Almost all our testing has used only the
+            <li>Almost all our internal testing has used only the
             S&eacute;rsic, PSF, exponential disc and sky
             functions. The way that we have implemented the multi-band
             method means that it should work with any of the standard
@@ -211,8 +236,8 @@
 
             <li>GALFITM prior to version 1.2.0 was based upon
             GALFIT-3.0.2. It therefore did not include some of Chien
-            Peng's latest additions to GALFIT (on version 3.0.5 at
-            time of writing).  These are merged into GALFITM version
+            Peng's latest additions to GALFIT. These updates in
+            GALFIT-3.0.5 were merged into GALFITM version
             1.2.0. The changes are mostly minor, primarily the
             addition of flags providing information about potential
             issues with a fit. However, internally-generated sigma
@@ -223,18 +248,16 @@
 	    <li>Although implemented, the use of MultiNest sampling
 	    has not been tested much, and is very slow, prohibitively
 	    so for models with multiple components and wavelength
-	    freedom.  It is definitely not ready for serious use.</li>
+	    freedom. It is definitely not ready for serious use.</li>
 
-            <li>GALFITM is still in active development, and there
+            <li>GALFITM is still in active (though sporadic) development, and there
             are some rough areas that could do with some work to
             make them more suitable for public use. While the
             central functionality is unikely to change
             substantially, the software will continue to be refined
             and polished. New versions, and the changes involved,
-            will be announced via our Google+ <a
-            href="https://plus.google.com/103670520789030779243/posts">page</a>
-            and <a
-            href="https://plus.google.com/communities/101731295964036445086">community</a>.</li>
+            will be announced here and via our Facebook <a
+            href="https://www.facebook.com/groups/295177727820811/">group</a>.</li>
           </ul>
 
           <h2>Papers</h2>
@@ -314,12 +337,9 @@
           <div class="span4" style="margin-top:80px">
             <div style=
             "margin-left:auto; margin-right:auto; width:240px">
-              <div class="g-page" data-width="240" data-href=
-              "//plus.google.com/103670520789030779243" data-rel=
-              "publisher"></div>
-
-              <p>Follow our <a href="https://plus.google.com/103670520789030779243/posts">Google+ page</a> for announcements, and
-              join in the discussion on our <a href="https://plus.google.com/communities/101731295964036445086">community page</a>.</p>
+              <p>Join our Facebook <a
+              href="https://www.facebook.com/groups/295177727820811/">group</a>
+              for discussions and announcements.</p>
             </div>
           </div>
         </div>

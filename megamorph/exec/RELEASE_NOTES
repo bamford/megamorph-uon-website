@@ -2,6 +2,107 @@
 
 ## GALFITM
 
+### galfitm-1.4.2
+
+Fixed a few outstanding minor issues:
+
+* Remove superfluous space from component extension names (fixes #138)
+* Do not replace missing filenames (data, psf, badpix) with none. This avoids overflows when input tokens are smaller than 4 characters (fixes #139)
+* Ignore S option and remove unnecessary blank lines. S option is included in GALAPAGOS feedmes, resulting in some output that is intended for interactive use. However, it is apparently deprecated in recent versions of galfit.
+* Make some feedme options more resilient to float input (fixes #141)
+
+
+### galfitm-1.4.1
+
+Merge recent fixes from galfitm-1.2.x branch into 1.4.x branch. See galfitm-1.2.x notes below for details of these fixes and galfitm-1.4.0 for features added in the 1.4.x branch.
+
+
+### galfitm-1.2.4
+
+A small fix to ensure that ndof, chisq, etc. are consistently output whenever input data is provided.
+
+
+### galfitm-1.2.3
+
+Tiny update to prevent axial ratio from going below 0.01, in order to avoid artefacts. Previous (standard galfit) behaviour is a bit odd: if the axial ratio goes below 0 (i.e. negative), then it is "pushed back" to 0.05. However, if the steps are small enough, it is possible for the axial ratio to attain extremely small values.
+
+It has been observed (by Boris) that for axial ratios well below 0.01 it is possible for artefacts to occur: what should be a narrow line becomes distinct 'blobs', apparently due to pixel aliasing. It is possible the flux normalisation may also be incorrect in such cases.
+
+To avoid this issue, recognising that objects with axial ratios below 0.01 are almost certainly unphysical, the minimum axial ratio has been changed from zero to 0.01. To preserve usual galfit behaviour, we continue to "push back" the axial ratio to 0.05 when it goes below the 0.01 limit. 
+
+
+### galfitm-1.2.2
+
+This fixes a bug (identified by Boris) with chisq when run without fitting. This only occurs when the output file is created without any fitting [i.e. -o2 option or "P) 1” in feedme]. 
+
+In previous versions of galfitm, the chisq, ndof and chi2nu that are reported in this case are calculated by a separate step (using chi2calc). In the conversion to multiband, this was neglected, such that the values for only one of the bands (whichever happens to comes last) are reported, rather than for all the bands combined.
+    
+This is fixed by this version: the chisq, ndof and chi2nu reported are those of all bands combined, in the same manner as done during the fitting process.
+    
+In addition, in case it is useful information, the chisq, ndof and chi2nu for each individual band are now captured and output in the 'BAND_INFO' table. These are also written to the headers of the corresponding model image extensions (note that this was already available in the non-fitting case, but changes behaviour in the case of fitting, as previously the same combined info was written to every header).
+
+
+### galfitm-1.4.0
+
+The main update in this release is the implementation of multi-band fitting
+with the higher-order features introduced in GALFIT3: bending, fourier and
+rotation isophotal distortions, in addition to boxiness. This allows
+multi-band modelling of galaxy lopsidedness (e.g. Kruk et al. 2016), spiral
+arms, etc. Basic functionality has been tested, but there may still be bugs.
+Truncations probably still do not work.
+
+There have also been a few additions to the non-parametric option.  You can
+now tune the nonparam threshold and specify a radius for optional masking
+of object centres in nonparam image.  There is also a 'nonparres' option to
+output the full residual image.
+
+Finally, a large (but as yet poorly documented) set of illustrations and
+tests are available, providing many examples of how GALFITM may be used.
+
+
+### galfitm-1.2.1
+
+This version merges over bugfixes and small additional features from the 1.3.x development branch. These are generally related to the more experimental aspects of GALFITM.
+
+1) Add -w command-line option to tailor output.
+You can now override the 'W)' feedme option from the command line.
+This is useful if you use 'W) none' to save space, but later want to
+recreate the model image(s) and/or residuals.
+   
+2) Make -o[123] options work correctly.
+These were not always outputting the correct images, they should be
+now.
+
+3) Implement the 'mask' output option
+You can now chose to have the mask(s) included in the output fits file
+
+4) Fix output of U) and V) options
+In the output feedmes (e.g., *.galfit.01, etc.) these were comma
+delimited, but should be space delimited. Using commas results in
+incorrect behaviour!
+
+5) Keep nonparam output images when appropriate.
+Under some circumstances non-parametric images were being incorrectly
+omitted from the output fits file.  They are now retained.
+
+6) Be sure to replace existing file, rather than appending.
+If the output fits file existed, under some circumstances it would be
+appended to, rather than a new file being created.
+
+7) Correct magnitudes of nonparam component.
+If your input image has exposure time other than 1 sec, the nonparam
+magnitudes were previously incorrect by a constant offset.
+
+8) Fix MultiNest.
+Using MultiNest was not working, but should be now (although still not
+something for regular users to try).
+
+9) Some others.
+* Avoid some buffer overrun errors.
+* Deal with 'bad' initial values a bit better.
+* Set default exptime to 1sec as precaution.
+
+
 ### galfitm-1.2.0
 
 This version includes a lot of changes since 1.1.12.  Backward compatibility should have been preserved, while adding features and flexibility.  However, due to changes merged in from standard galfit, fits performed using an internally-generated sigma image will give slightly different results to previous versions.  As usual galfitm is research software, and so should be used carefully and tested for your particular use case.  I have not labelled this a beta release, but one should be particulalrly attentive to the potential for bugs given the number of modifications made.  Please report any issues, ideally via the Google+ group.  The changes include:
