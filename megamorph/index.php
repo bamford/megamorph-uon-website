@@ -65,7 +65,9 @@
         </div>
 
         <div class="span7">
-          <p>The MegaMorph project has produced new versions of
+          <h2>About</h2>
+
+	  <p>The MegaMorph project has produced new versions of
           <a href=
           "http://users.obs.carnegiescience.edu/peng/work/galfit/galfit.html">
           GALFIT</a> and <a href=
@@ -138,17 +140,17 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.4.2. Executables for various
+          <p>The latest version is 1.4.3. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.4.2-linux-x86_64">v.1.4.2 Linux
+            <li><a href="exec/galfitm-1.4.3-linux-x86_64">v.1.4.3 Linux
             x86_64 (64-bit)</a></li>
 <!--
-	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.4.2 Linux
+	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.1 Linux
             i686 (32-bit)</a></li>
 -->
-            <li><a href="exec/galfitm-1.4.2-osx">v.1.4.2 OSX/MacOS (Yosemite onwards)</a></li>
+            <li><a href="exec/galfitm-1.4.3-osx">v.1.4.3 OSX/MacOS (Yosemite onwards)</a></li>
           </ul>
 
 	  <p>Versions 1.4.x enable the use of higher-order functions
@@ -159,13 +161,13 @@
           versions are available below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.2.5-linux-x86_64">v.1.2.5 Linux
+            <li><a href="exec/galfitm-1.2.6-linux-x86_64">v.1.2.6 Linux
             x86_64 (64-bit)</a></li>
 <!--
-	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.5 Linux
+	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.1 Linux
             i686 (32-bit)</a></li>
 -->
-            <li><a href="exec/galfitm-1.2.5-osx">v.1.2.5 OSX/MacOS (Yosemite onwards)</a></li>
+            <li><a href="exec/galfitm-1.2.6-osx">v.1.2.6 OSX/MacOS (Yosemite onwards)</a></li>
           </ul>
 
 	  <p>Note that, for comparisons and compatibility purposes,
@@ -260,6 +262,19 @@
             href="https://www.facebook.com/groups/295177727820811/">group</a>.</li>
           </ul>
 
+	  
+          <h2>Test suite</h2>
+
+          <p>We maintain a <a
+	  href="https://github.com/MegaMorph/galfitm-tests">suite of
+	  tests</a>
+	  for GALFIM. These are primarily for our own internal use in
+	  regression testing new versions. However, users may find
+	  them a useful source of examples, illustrating the range of
+	  functionality in GALFITM. Feel free to open a pull request
+	  with your own tests!</p>
+
+	  
           <h2>Papers</h2>
 
           <ul>

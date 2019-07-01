@@ -2,6 +2,16 @@
 
 ## GALFITM
 
+### galfitm-1.4.3 and galfitm-1.2.6
+
+Fix a bug that was introduced in 1.4.2/1.2.5 whereby default values for V) and W) were ignored.
+
+
+### galfitm-1.2.5
+
+Merge recent fixes from galfitm-1.4.2 into 1.2.x branch. 
+
+
 ### galfitm-1.4.2
 
 Fixed a few outstanding minor issues:
