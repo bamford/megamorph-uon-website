@@ -347,6 +347,7 @@
         </div><!-- /.span7 -->
       </div>
 
+<!--
       <div class="span4 hidden-phone">
         <div class="row">
           <div class="span4" style="margin-top:80px">
@@ -358,13 +359,14 @@
             </div>
           </div>
         </div>
-      </div>
+	</div>
+-->
     </div><!-- /.row -->
   </div><!-- /container -->
 
   <footer class="footer">
     <div class="container">
-      <p>&#169; University of Nottingham 2013 &nbsp; - &nbsp;
+      <p>&#169; University of Nottingham 2019 &nbsp; - &nbsp;
       <a href="mailto:steven.bamford@nottingham.ac.uk">Report
       Issues</a> &nbsp; <a href="../contact.php">Contact</a></p>
     </div>
