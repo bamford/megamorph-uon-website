@@ -139,35 +139,20 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.2.0. Executables for various
+          <p>The latest version is 1.2.1. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.2.0-linux-x86_64">Linux
+            <li><a href="exec/galfitm-1.2.1-linux-x86_64">Linux
             x86_64 (64-bit)</a></li>
-	    <!--
-	    <li><a href="exec/galfitm-1.2.0-linux-i686">Linux
+	    <li><a href="exec/galfitm-1.2.1-linux-i686">Linux
             i686 (32-bit)</a></li>
-	    -->
-            <li><a href="exec/galfitm-1.2.0-osx">OSX (Intel
-            &gt;10.5)</a></li>
-          </ul>
-
-          <p>The previous version was 1.1.12.  Executables are still
-          available below, in case of any issues accompanying the numerous changes
-          in 1.2.0.</p>
-
-          <ul>
-            <li><a href="exec/galfitm-1.1.12-linux-x86_64">Linux
-            x86_64 (64-bit)</a></li>
-	    <!--
-	    <li><a href="exec/galfitm-1.1.12-linux-i686">Linux
-            i686 (32-bit)</a></li>
-	    -->
-            <li><a href="exec/galfitm-1.1.12-osx">OSX (Intel
-            &gt;10.5)</a></li>
+            <li><a href="exec/galfitm-1.2.1-osx">OSX (Intel
+            Yosemite/Mavericks/Mountain Lion)</a></li>
           </ul>
 	  
+          <p>Documented example input files:</p>
+
           <ul>
             <li><a href=
             "exec/EXAMPLE.GALFITM.INPUT">EXAMPLE.GALFITM.INPUT</a></li>
@@ -276,7 +261,7 @@
             et al., 2013, "MegaMorph - multiwavelength measurement of
             galaxy structure: complete S&eacute;rsic profile
             information from modern surveys", MNRAS, 430,
-            430</a></li>
+            330</a></li>
 
             <li><a href=
             "http://adsabs.harvard.edu/abs/2014MNRAS.441.1340V">Vulcani
@@ -299,11 +284,27 @@
             separating the properties of spheroid and disk
             components in modern surveys", in prep.</li>
 
-
 	    <li><a href=
             "http://adsabs.harvard.edu/abs/2014PASP..126..935B">Bonfini,
             2014, "GALFIT-CORSAIR: Implementing the Core-S&eacute;rsic Model
-            Into GALFIT", PASP, 126, 935</a></li>	    
+	    Into GALFIT", PASP, 126, 935</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2015A%26A...577A..97V">Vika
+            et al., 2015, "MegaMorph: classifying galaxy morphology
+	    using multi-wavelength S&eacute;rsic profile fits",
+	    A&A, 577, 97</a></li>
+	    
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2015MNRAS.454..806K">Kennedy
+            et al., 2015, "Galaxy And Mass Assembly (GAMA): the
+	    wavelength dependence of galaxy structure versus redshift
+	    and luminosity", MNRAS, 454, 806</a></li>
+
+	    <li>Kennedy et al., "Galaxy And Mass Assembly (GAMA):
+	    understanding the wavelength dependence of galaxy structure with
+	    bulge-disc decompositions", MNRAS, submitted</li>
+
           </ul>
         </div><!-- /.span7 -->
       </div>
