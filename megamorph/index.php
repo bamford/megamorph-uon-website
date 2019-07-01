@@ -65,8 +65,6 @@
         </div>
 
         <div class="span7">
-          <h2>About</h2>
-
 	  <p>The MegaMorph project has produced new versions of
           <a href=
           "http://users.obs.carnegiescience.edu/peng/work/galfit/galfit.html">
