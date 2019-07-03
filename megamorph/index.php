@@ -154,20 +154,17 @@
 	  <p>Versions 1.4.x enable the use of higher-order functions
           (bending, fourier modes, rotation) from GALFIT3. For models
           that do not make use of these features, 1.4.x should behave
-          as before. While we fully ascertain that this is the case,
-          we continue to maintain the 1.2.x branch. The latest
-          versions are available below.</p>
+          as before.</p>
 
+<!--
           <ul>
             <li><a href="exec/galfitm-1.2.6-linux-x86_64">v.1.2.6 Linux
             x86_64 (64-bit)</a></li>
-<!--
 	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.1 Linux
             i686 (32-bit)</a></li>
--->
             <li><a href="exec/galfitm-1.2.6-osx">v.1.2.6 OSX/MacOS (Yosemite onwards)</a></li>
           </ul>
-
+-->
 	  <p>Note that, for comparisons and compatibility purposes,
 	  any previous version can be obtained by substituting the
 	  version number in the above links.</p>
