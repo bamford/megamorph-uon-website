@@ -2,6 +2,12 @@
 
 ## GALFITM
 
+### galfitm-1.4.4
+
+Fix a bug that caused a rare crash, occurring when an image had the same number of good pixels as free parameters.
+
+Note that all users are encouraged to switch to 1.4.x versions. Bugfixes will no longer be ported back to the 1.2.x branch.
+
 ### galfitm-1.4.3 and galfitm-1.2.6
 
 Fix a bug that was introduced in 1.4.2/1.2.5 whereby default values for V) and W) were ignored.

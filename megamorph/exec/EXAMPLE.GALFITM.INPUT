@@ -11,8 +11,6 @@ examples. The behaviour for multiple lines with the same letter is undefined.
 # the number of input data images defines <nbands>
 # the order of the bands must be maintained in all multi-band options
 # the first band in the list is the 'reference band'
-# these need not be the same size or co-registered
-# relative transformations may be specified in A3-6
 A) gal-r.fits,gal-g.fits,gal-i.fits
 
 # Band labels (CSL of <nbands> labels containing no whitespace)
@@ -24,17 +22,6 @@ A1) r,g,i
 # (choice of wavelength units is arbitrary, as long as consistent,
 #  but affects the resulting wavelength-dependence parameters)
 A2) 6220,4750,7630
-
-# Image coordinate transformations (CSL of values)
-# (all relative and applied to object parameters in this order)
-# rotation (degrees)
-A3) 0,0,0
-# scale factor (0 is treated as 1)
-A4) 1,1,1
-# x offset of image centres (pixels)
-A5) 0,0,0
-# y offset of image centres (pixels)
-A6) 0,0,0
 
 # Output data image block (FITS filename)
 B) imgblock.fits
@@ -74,13 +61,9 @@ G) none
 G) constraints_filename
 
 # Image region to fit (xmin xmax ymin ymax)
-# Beware that this is applied to ALL images, even if they are not co-registered.
-# If larger than a given image, the whole image is used.
 H) 1    93   1    93
 
 # Size of the convolution box (x y)
-# Beware that this is applied to ALL images.
-# If larger than a given image, the whole image is used.
 I) 100    100
 
 # Magnitude photometric zeropoint (CSL of <nbands> values)

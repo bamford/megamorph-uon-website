@@ -138,17 +138,17 @@
 	  <p><em>Primarily maintained by <a href=
           "mailto:steven.bamford@nottingham.ac.uk">Steven Bamford</a>.</em></p>
 
-          <p>The latest version is 1.4.3. Executables for various
+          <p>The latest version is 1.4.4. Executables for various
           platforms can be downloaded from the links below.</p>
 
           <ul>
-            <li><a href="exec/galfitm-1.4.3-linux-x86_64">v.1.4.3 Linux
+            <li><a href="exec/galfitm-1.4.4-linux-x86_64">v.1.4.4 Linux
             x86_64 (64-bit)</a></li>
 <!--
 	    <li><a href="exec/galfitm-1.2.1-linux-i686">v.1.2.1 Linux
             i686 (32-bit)</a></li>
 -->
-            <li><a href="exec/galfitm-1.4.3-osx">v.1.4.3 OSX/MacOS (Yosemite onwards)</a></li>
+            <li><a href="exec/galfitm-1.4.4-osx">v.1.4.4 OSX/MacOS (Yosemite onwards)</a></li>
           </ul>
 
 	  <p>Versions 1.4.x enable the use of higher-order functions
