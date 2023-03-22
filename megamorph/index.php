@@ -312,10 +312,12 @@
             galaxy structure: physically meaningful bulge-disk
             decomposition of galaxies near and far", MNRAS, 444, 3603</a></li>
 
-            <li>Haeussler et al., "MegaMorph -
-            multi-wavelength measurement of galaxy structure:
-            separating the properties of spheroid and disk
-            components in modern surveys", in prep.</li>
+            <li><a href=
+            "http://adsabs.harvard.edu/abs/2022A&A...664A..92H">Haeussler
+            et al., 2022, "GALAPAGOS-2/GALFITM/GAMA - Multi-wavelength
+            measurement of galaxy structure: Separating the properties
+            of spheroid and disk components in modern surveys",
+            A&amp;A, 664, 92</a></li>
 
 	    <li><a href=
             "http://adsabs.harvard.edu/abs/2014PASP..126..935B">Bonfini,
