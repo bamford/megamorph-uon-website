@@ -87,7 +87,7 @@
 	  Qatar National Research Fund (NPRP grant 08-643-1-112).  The
 	  main personnel who have worked to create, test and apply the
 	  code are: Steven Bamford (Nottingham), Boris Haeussler
-	  (Nottingham/Oxford), Marina Vika (CMU-Qatar) and Alex Rojas
+	  (Nottingham/Oxford/ESO), Marina Vika (CMU-Qatar) and Alex Rojas
 	  (CMU-Qatar).  Others who have directly contributed to the
 	  development and early science verification include Benedetta
 	  Vulcani (CMU-Q/IPMU), Lee Kelvin (St.Andrews/UWA/Innsbruck),
@@ -350,11 +350,6 @@
             604, 54</a></li>
 
 	    <li><a href=
-            "http://adsabs.harvard.edu/abs/2018MNRAS.465.2317J">Johnston
-            et al., 2017, "SDSS-IV MaNGA: bulge-disc decomposition of
-            IFU data cubes (BUDDI)", MNRAS, 465, 2317</a></li>
-	    
-	    <li><a href=
             "http://adsabs.harvard.edu/abs/2018MNRAS.469.3363K">Kruk
             et al., 2017, "Galaxy Zoo: finding offset discs and bars
             in SDSS galaxies", MNRAS, 469, 3363</a></li>
@@ -366,6 +361,12 @@
 	    images", MNRAS, 473, 4731</a></li>
 
 	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2018MNRAS.478.5410D">Dimauro
+            et al., 2018, "A catalog of polychromatic bulge-disc
+            decompositions of ∼17.600 galaxies in CANDELS", MNRAS, 478,
+	    5410</a></li>
+	    
+	    <li><a href=
             "http://adsabs.harvard.edu/abs/2020A%26A...633A.104P">Psychogyios
             et al., 2020, "Multi-wavelength structure analysis of
             local cluster galaxies. The WINGS projects", A&A, 633,
@@ -375,10 +376,56 @@
             "http://adsabs.harvard.edu/abs/2021MNRAS.504.2146B">Buzzo
             et al., 2021, "Recovering the origins of the lenticular
             galaxy NGC 3115 using multiband imaging", MNRAS, 504,
-            2146</a></li>
+	    2146</a></li>
+	    
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2021MNRAS.506..928N">Nedkova
+            et al., 2021, "Extending the evolution of the stellar
+            mass-size relation at z ≤ 2 to low stellar mass galaxies
+	    from HFF and CANDELS", MNRAS, 506, 928</a></li>
 
+	    <li><a href=
+	    "http://adsabs.harvard.edu/abs/2023A&A...671A.101E">Euclid
+	    Collaboration et al., 2023, "Euclid preparation. XXV.
+	    The Euclid Morphology Challenge: Towards model-fitting
+	    photometry for billions of galaxies", A&amp;A, 671, 101</a></li>
+
+	    <li><a href=
+	    "http://adsabs.harvard.edu/abs/2023A&A...671A.102E">Euclid
+	    Collaboration et al., 2023, "Euclid preparation. XXVI.
+	    The Euclid Morphology Challenge: Towards structural
+	    parameters for billions of galaxies", A&amp;A, 671, 102</a></li>
 	  </ul>
 
+	  <p>The <a
+	  href="https://evelynj.github.io/buddi.html">BUDDI</a>
+	  software by Evelyn Johnston makes use of GALFITM to
+	  perform bulge-disc decomposition of MaNGA and MUSE IFU data.</p>
+	  <ul>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2017MNRAS.465.2317J">Johnston
+            et al., 2017, "SDSS-IV MaNGA: bulge-disc decomposition of
+	    IFU data cubes (BUDDI)", MNRAS, 465, 2317</a></li>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2018MNRAS.478.4255J">Johnston
+            et al., 2018, "Spectroscopic decomposition of the galaxy
+	    and halo of the cD galaxy NGC 3311", MNRAS, 478, 4255</a></li>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2021MNRAS.500.4193J">Johnston
+            et al., 2021, "Formation of S0s in extreme environments
+	    II: The star-formation histories of bulges, discs, and
+	    lensess", MNRAS, 500, 4193</a></li>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2022MNRAS.514.6120J">Johnston
+            et al., 2022, "BUDDI-MaNGA I: A statistical sample of
+	    cleanly decomposed bulge and disc spectra", MNRAS, 514, 6120</a>
+	    </li>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2022MNRAS.514.6141J">Johnston
+            et al., 2022, "BUDDI-MaNGA II: the star-formation
+	    histories of bulges and discs of S0s", MNRAS, 514, 6141</a></li>
+	  </ul>
+	    
         </div><!-- /.span7 -->
       </div>
 
@@ -401,7 +448,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>&#169; University of Nottingham 2019 &nbsp; - &nbsp;
+      <p>&#169; University of Nottingham 2023 &nbsp; - &nbsp;
       <a href="mailto:steven.bamford@nottingham.ac.uk">Report
       Issues</a> &nbsp; <a href="../contact.php">Contact</a></p>
     </div>
