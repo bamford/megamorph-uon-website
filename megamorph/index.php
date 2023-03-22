@@ -114,12 +114,6 @@
 	  relevant maintainer(s) for further advice on using the
 	  code.</p>
 
-          <p>If you have any questions or problems, you can ask for
-          help on our Facebook <a
-          href="https://www.facebook.com/groups/295177727820811/">group</a>.
-          As new versions are produced they will be announced there,
-          so please join to keep up-to-date with developments.</p>
-
           <h2>Downloads</h2>
 
           <p>Our software is available below. Please bear in mind
@@ -271,17 +265,14 @@
 
 	  
           <h2>Papers</h2>
-
+	  <p>The papers below were produced by the MegaMorph team.</p>
+	  
           <ul>
             <li><a href=
             "http://adsabs.harvard.edu/abs/2011ASPC..442..479B">Bamford
             et al., 2010, "Measuring the Physical Properties of
             Galaxy Components Using Modern Surveys", ADASS XX conf.
             proc.</a></li>
-
-            <li>Bamford et al., "MegaMorph - multi-wavelength
-            measurement of galaxy structure: motivation, design and
-            demonstration of principles", in prep.</li>
 
             <li><a href=
             "http://adsabs.harvard.edu/abs/2013MNRAS.435..623V">Vika
@@ -302,45 +293,92 @@
             the wavelength-dependent sizes and profiles of galaxies
             revealed by MegaMorph", MNRAS, 441, 1340</a></li>
 
-            <li>Bamford et al., "MegaMorph -
-            multi-wavelength measurement of galaxy structure:
-            non-parametric galaxy components", in prep.</li>
-
             <li><a href=
             "http://adsabs.harvard.edu/abs/2014MNRAS.444.3603V">Vika
             et al., 2014, "MegaMorph - multi-wavelength measurement of
             galaxy structure: physically meaningful bulge-disk
             decomposition of galaxies near and far", MNRAS, 444, 3603</a></li>
 
-            <li><a href=
-            "http://adsabs.harvard.edu/abs/2022A&A...664A..92H">Haeussler
-            et al., 2022, "GALAPAGOS-2/GALFITM/GAMA - Multi-wavelength
-            measurement of galaxy structure: Separating the properties
-            of spheroid and disk components in modern surveys",
-            A&amp;A, 664, 92</a></li>
-
-	    <li><a href=
-            "http://adsabs.harvard.edu/abs/2014PASP..126..935B">Bonfini,
-            2014, "GALFIT-CORSAIR: Implementing the Core-S&eacute;rsic Model
-	    Into GALFIT", PASP, 126, 935</a></li>
-
 	    <li><a href=
             "http://adsabs.harvard.edu/abs/2015A%26A...577A..97V">Vika
             et al., 2015, "MegaMorph: classifying galaxy morphology
 	    using multi-wavelength S&eacute;rsic profile fits",
 	    A&A, 577, 97</a></li>
-	    
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2022A&A...664A..92H">Haeussler
+            et al., 2022, "GALAPAGOS-2/GALFITM/GAMA - Multi-wavelength
+            measurement of galaxy structure: Separating the properties
+            of spheroid and disk components in modern surveys",
+            A&amp;A, 664, 92</a></li>
+	  </ul>
+	      
+	  <p>The following series of papers apply MegaMorph to study
+	     the bulge-disk properties of galaxies in GAMA survey.</p>
+	  <ul>
 	    <li><a href=
             "http://adsabs.harvard.edu/abs/2015MNRAS.454..806K">Kennedy
             et al., 2015, "Galaxy And Mass Assembly (GAMA): the
 	    wavelength dependence of galaxy structure versus redshift
 	    and luminosity", MNRAS, 454, 806</a></li>
 
-	    <li>Kennedy et al., "Galaxy And Mass Assembly (GAMA):
-	    understanding the wavelength dependence of galaxy structure with
-	    bulge-disc decompositions", MNRAS, submitted</li>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2016MNRAS.460.3458K">Kennedy
+            et al., "Galaxy And Mass Assembly (GAMA): understanding
+            the wavelength dependence of galaxy structure with
+            bulge-disc decompositions", MNRAS, 460, 3458</a></li>
 
-          </ul>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2016A%26A...593A..84K">Kennedy
+            et al., 2015, "Galaxy And Mass Assembly (GAMA): Galaxy
+            colour gradients versus colour, structure, and
+            luminosity", A&A, 593, A84</a></li>
+	  </ul>
+
+	  <p>Some related papers, which make use of GALFITM and/or
+	  GALAPAGOS-2, are listed below.</p>
+	  <ul>
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2014PASP..126..935B">Bonfini,
+            2014, "GALFIT-CORSAIR: Implementing the Core-S&eacute;rsic Model
+	    Into GALFIT", PASP, 126, 935</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2017A%26A...604A..54K">Kuchner
+            et al., 2017, "The effects of the cluster environment on
+            the galaxy mass-size relation in MACS J1206.2-0847", A&A,
+            604, 54</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2018MNRAS.465.2317J">Johnston
+            et al., 2017, "SDSS-IV MaNGA: bulge-disc decomposition of
+            IFU data cubes (BUDDI)", MNRAS, 465, 2317</a></li>
+	    
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2018MNRAS.469.3363K">Kruk
+            et al., 2017, "Galaxy Zoo: finding offset discs and bars
+            in SDSS galaxies", MNRAS, 469, 3363</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2018MNRAS.473.4731K">Kruk
+            et al., 2018, "Galaxy Zoo: secular evolution of barred
+            galaxies from structural decomposition of multiband
+	    images", MNRAS, 473, 4731</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2020A%26A...633A.104P">Psychogyios
+            et al., 2020, "Multi-wavelength structure analysis of
+            local cluster galaxies. The WINGS projects", A&A, 633,
+            104</a></li>
+
+	    <li><a href=
+            "http://adsabs.harvard.edu/abs/2021MNRAS.504.2146B">Buzzo
+            et al., 2021, "Recovering the origins of the lenticular
+            galaxy NGC 3115 using multiband imaging", MNRAS, 504,
+            2146</a></li>
+
+	  </ul>
+
         </div><!-- /.span7 -->
       </div>
 
